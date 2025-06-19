@@ -31,19 +31,38 @@ header > p {
 }
 
 .status {
-  background-color: green;
+  background-color: #10A95B;
+  color: #F9F4DA;
   text-align: center;
   padding: 10px 0;
   border-radius: 5px;
 }
 
-.status > h1 {
+h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #F9F4DA;
+}
+
+.status > p {
+  margin: 0;
+  font-weight: 400;
+}
+
+.languages {
+  display: flex;
+  max-width: 350px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  justify-content: center;
+  gap: 5px;
+}
+
+.languages > p {
+  padding: 2px 5px;
+  border-radius: 5px;
   margin: 0;
 }
 
-.status > h2 {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 400;
-}
 

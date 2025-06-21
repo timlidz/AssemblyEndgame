@@ -5,6 +5,7 @@ import React from "react"
 function App() {
   const [word, setWord] = React.useState("react")
 
+  const alphabet = "abcdefghijklmnopqrstuvwxyz"
 
 
   return (
@@ -22,6 +23,9 @@ function App() {
       </section>
       <section className="word">
         {word.split('').map((el, index) => <span key={index}>{el.toUpperCase()}</span>)}
+      </section>
+      <section className="keyboard">
+        {[...alphabet].map(el => <button key={el}>{el.toUpperCase()}</button>)}
       </section>
     </>
   )

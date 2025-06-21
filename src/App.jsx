@@ -1,7 +1,11 @@
 import { languages } from "./languages"
+import React from "react"
+
 
 function App() {
-  
+  const [word, setWord] = React.useState("react")
+
+
 
   return (
     <>
@@ -15,6 +19,9 @@ function App() {
       </div>
       <section className="languages">
           {languages.map(el => <p style={{color: el.color, backgroundColor: el.backgroundColor}} key={el.name}>{el.name}</p>)}
+      </section>
+      <section className="word">
+        {word.split('').map((el, index) => <span key={index}>{el.toUpperCase()}</span>)}
       </section>
     </>
   )

@@ -65,4 +65,23 @@ h2 {
   margin: 0;
 }
 
+.word {
+  margin: 40px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.word > span {
+  width: 30px;
+  height: 30px;
+  background-color: #363535;
+  text-align: center;
+  margin: 2px;
+  padding: 5px;
+  border-bottom: #d6d2bd 1px solid;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -14,10 +14,22 @@ function App() {
     [...prev, letter] )
   }
 
-  function buttonColors(letter) {
-    const classVar = [...word].includes(letter) ? 'key-correct' : 'key-wrong'
-    return classVar
-  }
+
+  const wordDisplay = [...word].map((el, index) => 
+  <span key={index}>{letters.includes(el) ? el.toUpperCase() : ""}</span> )
+
+
+  const keyboardElements = 
+    [...alphabet].map(el => {
+    const isGuessed = letters.includes(el)
+    const isCorrect = isGuessed && word.includes(el)
+    const isWrong = isGuessed && !word.includes(el)
+    const className = clsx({'key-correct':isCorrect, 'key-wrong':isWrong})
+    return (
+      <button className={className}
+      onClick={() => guessLetters(el)} key={el} id={el}>{el.toUpperCase()}</button>
+    )}
+  )
 
   return (
     <>
@@ -33,19 +45,10 @@ function App() {
           {languages.map(el => <p style={{color: el.color, backgroundColor: el.backgroundColor}} key={el.name}>{el.name}</p>)}
       </section>
       <section className="word">
-        {word.split('').map((el, index) => <span key={index}>{el.toUpperCase()}</span>)}
+        {wordDisplay}
       </section>
       <section className="keyboard">
-        {[...alphabet].map(el => {
-          const isGuessed = letters.includes(el)
-          const isCorrect = isGuessed && word.includes(el)
-          const isWrong = isGuessed && !word.includes(el)
-          const className = clsx({'key-correct':isCorrect, 'key-wrong':isWrong})
-          return (
-            <button className={className}
-            onClick={() => guessLetters(el)} key={el} id={el}>{el.toUpperCase()}</button>
-          )}
-        )}
+        {keyboardElements}
       </section>
       <button className="new-game">New Game</button>
     </>

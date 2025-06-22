@@ -11,6 +11,7 @@ function App() {
   //derived values
   const wrongGuessCount = letters.reduce((acc, curr) => 
     word.includes(curr) ? acc+0 : acc+1, 0)
+  const isGameOver = wrongGuessCount >= languages.length-1
 
   // static values
   const alphabet = "abcdefghijklmnopqrstuvwxyz"
@@ -57,7 +58,7 @@ function App() {
       <section className="keyboard">
         {keyboardElements}
       </section>
-      <button className="new-game">New Game</button>
+      {isGameOver && <button className="new-game">New Game</button>}
     </>
   )
 }

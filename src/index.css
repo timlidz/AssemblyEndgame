@@ -63,6 +63,22 @@ h2 {
   padding: 2px 5px;
   border-radius: 5px;
   margin: 0;
+  position: relative;
+}
+
+/* Dimmed overlay with skull on "lost" languages */
+.languages > p.lost::before {
+  content: "💀";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  font-size: 0.85rem;
 }
 
 .word {

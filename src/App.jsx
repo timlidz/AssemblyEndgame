@@ -4,9 +4,15 @@ import { clsx } from 'clsx';
 
 
 function App() {
+  // State values
   const [word, setWord] = React.useState("react")
   const [letters, setLetters] = React.useState([])
 
+  //derived values
+  const wrongGuessCount = letters.reduce((acc, curr) => 
+    word.includes(curr) ? acc+0 : acc+1, 0)
+
+  // static values
   const alphabet = "abcdefghijklmnopqrstuvwxyz"
 
   function guessLetters(letter){
@@ -31,6 +37,7 @@ function App() {
     )}
   )
 
+
   return (
     <>
       <header>
@@ -42,7 +49,7 @@ function App() {
         <p>Well done 🎉</p>
       </div>
       <section className="languages">
-          {languages.map(el => <p style={{color: el.color, backgroundColor: el.backgroundColor}} key={el.name}>{el.name}</p>)}
+          {languages.map((el, index) => <p className={index < wrongGuessCount ? 'lost' : ""} style={{color: el.color, backgroundColor: el.backgroundColor}} key={el.name}>{el.name}</p>)}
       </section>
       <section className="word">
         {wordDisplay}

@@ -11,7 +11,11 @@ function App() {
   //derived values
   const wrongGuessCount = letters.reduce((acc, curr) => 
     word.includes(curr) ? acc+0 : acc+1, 0)
-  const isGameOver = wrongGuessCount >= languages.length-1
+
+  const isGameWon = 
+  word.split("").every(el => letters.includes(el))
+  const isGameLost = wrongGuessCount >= languages.length - 1
+  const isGameOver = isGameWon || isGameLost
 
   // static values
   const alphabet = "abcdefghijklmnopqrstuvwxyz"
@@ -38,6 +42,24 @@ function App() {
     )}
   )
 
+  function statusUpdate() {
+    if (isGameWon) {
+      return <div className="status-won">
+                <h2>You Win!</h2>
+                <p>Well done 🎉</p> 
+              </div>
+    }
+    if (isGameLost) {
+      return <div className="status-lost">
+                <h2>Game Over!</h2>
+                <p>Better start learning Assembly</p> 
+              </div>
+    }
+    return <div className="status">
+            </div>
+      
+  }
+
 
   return (
     <>
@@ -45,10 +67,7 @@ function App() {
         <h1>Assembly: Endgame</h1>
         <p>Guess the word in under 8 attempts to keep the programming world safe from Assembly!</p>
       </header>
-      <div className="status">
-        <h2>You Win!</h2>
-        <p>Well done 🎉</p>
-      </div>
+      {statusUpdate()}
       <section className="languages">
           {languages.map((el, index) => <p className={index < wrongGuessCount ? 'lost' : ""} style={{color: el.color, backgroundColor: el.backgroundColor}} key={el.name}>{el.name}</p>)}
       </section>

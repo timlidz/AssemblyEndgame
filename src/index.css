@@ -30,12 +30,30 @@ header > p {
   color: #8E8E8E;
 }
 
-.status {
+.status-won {
   background-color: #10A95B;
   color: #F9F4DA;
   text-align: center;
   padding: 10px 0;
   border-radius: 5px;
+  height: 70px;
+}
+
+.status-lost {
+  background-color: #911111;
+  color: #F9F4DA;
+  text-align: center;
+  padding: 10px 0;
+  border-radius: 5px;
+  height: 70px;
+}
+
+.status {
+  color: #F9F4DA;
+  text-align: center;
+  padding: 10px 0;
+  border-radius: 5px;
+  height: 70px;
 }
 
 h2 {
@@ -45,7 +63,7 @@ h2 {
   color: #F9F4DA;
 }
 
-.status > p {
+.status > p, .status-won > p, .status-lost > p {
   margin: 0;
   font-weight: 400;
 }

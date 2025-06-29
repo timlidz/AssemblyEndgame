@@ -40,6 +40,8 @@ function App() {
     return (
       <button className={className}
       disabled={isGameOver}
+      aria-disabled={letters.includes(el)}
+      aria-label={`Letter ${el}`}
       onClick={() => guessLetters(el)} 
       key={el} 
       id={el}>{el.toUpperCase()}</button>
@@ -48,23 +50,23 @@ function App() {
 
   function statusUpdate() {
     if (isGameWon) {
-      return <div className="status status-won">
+      return <div className="status status-won" aria-live="polite" role="status">
                 <h2>You Win!</h2>
                 <p>Well done 🎉</p> 
               </div>
     }
     if (isGameLost) {
-      return <div className="status status-lost">
+      return <div className="status status-lost" aria-live="polite" role="status">
                 <h2>Game Over!</h2>
                 <p>Better start learning Assembly 😭</p> 
               </div>
     }
     if (!word.includes(letters.slice(-1))) {
-      return <div className="status status-lost-life">
+      return <div className="status status-lost-life" aria-live="polite" role="status">
         "{getFarewellText(languages[wrongGuessCount-1].name)}"
       </div>
     }
-    return <div className="status">
+    return <div className="status" aria-live="polite" role="status">
             </div>  
   }
 
@@ -75,17 +77,30 @@ function App() {
         <h1>Assembly: Endgame</h1>
         <p>Guess the word in under 8 attempts to keep the programming world safe from Assembly!</p>
       </header>
-      {statusUpdate()}
+
+        {statusUpdate()}
+
       <section className="languages">
           {languages.map((el, index) => <p className={index < wrongGuessCount ? 'lost' : ""} style={{color: el.color, backgroundColor: el.backgroundColor}} key={el.name}>{el.name}</p>)}
       </section>
+
       <section className="word">
         {wordDisplay}
       </section>
+
+      <section className="sr-only" aria-live="polite" 
+                role="status">
+          <p>Current word: {word.split("").map(letter => 
+                letters.includes(letter) ? letter + "." : "blank.")
+                .join(" ")}</p>
+      </section>
+
       <section className="keyboard">
         {keyboardElements}
       </section>
+
       {isGameOver && <button className="new-game">New Game</button>}
+
     </main>
   )
 }

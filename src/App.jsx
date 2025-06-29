@@ -39,7 +39,10 @@ function App() {
     const className = clsx({'key-correct':isCorrect, 'key-wrong':isWrong})
     return (
       <button className={className}
-      onClick={() => guessLetters(el)} key={el} id={el}>{el.toUpperCase()}</button>
+      disabled={isGameOver}
+      onClick={() => guessLetters(el)} 
+      key={el} 
+      id={el}>{el.toUpperCase()}</button>
     )}
   )
 

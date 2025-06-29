@@ -27,8 +27,9 @@ function App() {
   }
 
 
-  const wordDisplay = [...word].map((el, index) => 
-  <span key={index}>{letters.includes(el) ? el.toUpperCase() : ""}</span> )
+  // const wordDisplay = [...word].map((el, index) => 
+  // <span key={index}>{letters.includes(el) ? el.toUpperCase() : ""}</span> )
+
 
 
   const keyboardElements = 
@@ -47,6 +48,18 @@ function App() {
       id={el}>{el.toUpperCase()}</button>
     )}
   )
+
+  function wordDisplay() {
+
+    if (isGameLost) {
+      return [...word].map((el, index) => 
+        <span key={index} className={letters.includes(el) ? "" : "lost-letter"}>{el.toUpperCase()} </span> )
+    }
+
+    return [...word].map((el, index) => 
+      <span key={index}>{letters.includes(el) ? el.toUpperCase() : ""} </span> )
+
+  }
 
   function statusUpdate() {
     if (isGameWon) {
@@ -91,7 +104,7 @@ function App() {
       </section>
 
       <section className="word">
-        {wordDisplay}
+        {wordDisplay()}
       </section>
 
       <section className="sr-only" aria-live="polite" 

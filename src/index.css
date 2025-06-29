@@ -127,6 +127,11 @@ h2 {
   align-items: center;
 }
 
+.word > .lost-letter {
+  color: #975050;
+  border-bottom: #8d8a7d 1px dashed;
+}
+
 
 .keyboard {
   max-width: 450px;

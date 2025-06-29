@@ -6,7 +6,7 @@ import { getFarewellText, getRandomWord } from "./utils";
 
 function App() {
   // State values
-  const [word, setWord] = React.useState(getRandomWord())
+  const [word, setWord] = React.useState(() => getRandomWord())
   const [letters, setLetters] = React.useState([])
 
   //derived values
@@ -71,6 +71,11 @@ function App() {
             </div>  
   }
 
+  function resetGame() {
+    setWord(getRandomWord())
+    setLetters([])
+  }
+
 
   return (
     <main>
@@ -100,7 +105,7 @@ function App() {
         {keyboardElements}
       </section>
 
-      {isGameOver && <button className="new-game">New Game</button>}
+      {isGameOver && <button onClick={() => resetGame()} className="new-game">New Game</button>}
 
     </main>
   )

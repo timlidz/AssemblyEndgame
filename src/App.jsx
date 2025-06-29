@@ -1,12 +1,12 @@
 import { languages } from "./languages"
 import React from "react"
 import { clsx } from 'clsx';
-import { getFarewellText } from "./utils";
+import { getFarewellText, getRandomWord } from "./utils";
 
 
 function App() {
   // State values
-  const [word, setWord] = React.useState("react")
+  const [word, setWord] = React.useState(getRandomWord())
   const [letters, setLetters] = React.useState([])
 
   //derived values
@@ -56,6 +56,7 @@ function App() {
               </div>
     }
     if (isGameLost) {
+      console.log(word)
       return <div className="status status-lost" aria-live="polite" role="status">
                 <h2>Game Over!</h2>
                 <p>Better start learning Assembly 😭</p> 

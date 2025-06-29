@@ -9,8 +9,12 @@ body {
   color: #D9D9D9;
   padding: 20px;
   height: 100vh;
+}
+
+main {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 
@@ -30,31 +34,33 @@ header > p {
   color: #8E8E8E;
 }
 
-.status-won {
-  background-color: #10A95B;
-  color: #F9F4DA;
-  text-align: center;
-  padding: 10px 0;
-  border-radius: 5px;
-  height: 70px;
-}
-
-.status-lost {
-  background-color: #911111;
-  color: #F9F4DA;
-  text-align: center;
-  padding: 10px 0;
-  border-radius: 5px;
-  height: 70px;
-}
-
 .status {
   color: #F9F4DA;
   text-align: center;
   padding: 10px 0;
   border-radius: 5px;
   height: 70px;
+  width: 100%;
+  max-width: 350px;
 }
+
+.status-won {
+  background-color: #10A95B;
+}
+
+.status-lost {
+  background-color: #911111;
+}
+
+.status-lost-life {
+  background-color: #8862b4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: dashed #262626 2px;
+  font-style: italic;
+}
+
 
 h2 {
   margin: 0;
@@ -63,7 +69,7 @@ h2 {
   color: #F9F4DA;
 }
 
-.status > p, .status-won > p, .status-lost > p {
+.status > p {
   margin: 0;
   font-weight: 400;
 }
@@ -122,7 +128,7 @@ h2 {
 
 
 .keyboard {
-  width: 350px;
+  max-width: 450px;
   display: flex;
   align-items: center;
   justify-content: center;

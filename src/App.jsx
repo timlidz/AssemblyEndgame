@@ -1,6 +1,7 @@
 import { languages } from "./languages"
 import React from "react"
 import { clsx } from 'clsx';
+import { getFarewellText } from "./utils";
 
 
 function App() {
@@ -44,25 +45,29 @@ function App() {
 
   function statusUpdate() {
     if (isGameWon) {
-      return <div className="status-won">
+      return <div className="status status-won">
                 <h2>You Win!</h2>
                 <p>Well done 🎉</p> 
               </div>
     }
     if (isGameLost) {
-      return <div className="status-lost">
+      return <div className="status status-lost">
                 <h2>Game Over!</h2>
-                <p>Better start learning Assembly</p> 
+                <p>Better start learning Assembly 😭</p> 
               </div>
     }
+    if (!word.includes(letters.slice(-1))) {
+      return <div className="status status-lost-life">
+        "{getFarewellText(languages[wrongGuessCount-1].name)}"
+      </div>
+    }
     return <div className="status">
-            </div>
-      
+            </div>  
   }
 
 
   return (
-    <>
+    <main>
       <header>
         <h1>Assembly: Endgame</h1>
         <p>Guess the word in under 8 attempts to keep the programming world safe from Assembly!</p>
@@ -78,7 +83,7 @@ function App() {
         {keyboardElements}
       </section>
       {isGameOver && <button className="new-game">New Game</button>}
-    </>
+    </main>
   )
 }
 
